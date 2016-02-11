@@ -20,20 +20,13 @@
 </head>
 
 <body onload="startTime()">
-
-<div class="row">
-  <div class="welcome col-md-6 col-md-offset-3">
-    <h1>Welcome back, Pieter.</h1>
-    <h1 id="txt"></h1>
-    <h1><%= get_time %></h1>
+  <div class="row">
+    <div class="welcome col-md-6 col-md-offset-3">
+      <h1>Welcome back, Pieter.</h1>
+      <h1 id="txt"></h1>
+    </div>
   </div>
-</div>
-
-<div class="row" id="dynamic">
-  <%= get_weather %>
-  <div class="todo col-md-3 col-md-offset-6">
-
+  <div class="row" id="dynamic">
+    <%= get_weather %>
   </div>
-</div>
-
-<body/>
+</body>

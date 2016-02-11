@@ -5,19 +5,13 @@ module PagesHelper
 
   def reddit_search
 
-    url = 'https://www.reddit.com/r/EarthPorn/search.json?q=&limit=1&restrict_sr=on&sort=top&t=hour'
+    url = 'https://www.reddit.com/r/EarthPorn/search.json?q=&limit=1&restrict_sr=on&sort=top&t=day'
 
     response = HTTParty.get(url)
 
     json = JSON.parse(response.body)
 
     json.fetch('data').fetch('children')[0].fetch('data').fetch('url')
-  end
-
-  def get_time
-    time = Time.new()
-    
-    "#{time.hour}:#{time.min}"
   end
 
   def get_weather
