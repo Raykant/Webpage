@@ -14,6 +14,12 @@ module PagesHelper
     json.fetch('data').fetch('children')[0].fetch('data').fetch('url')
   end
 
+  def get_time
+    time = Time.new()
+
+    "#{time.hour}:#{time.min}"
+  end
+
   def get_weather
 
     url = 'http://api.openweathermap.org/data/2.5/weather?id=5408132&appid=8cfd2a75036eac999bda999a76e7f608'
