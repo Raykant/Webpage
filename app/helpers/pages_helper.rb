@@ -16,7 +16,7 @@ module PagesHelper
 
   def get_weather
 
-    url = 'http://api.openweathermap.org/data/2.5/weather?id=5408132&appid=8cfd2a75036eac999bda999a76e7f608'
+    url = 'https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/37.4420,-122.1771'
 
     response = HTTParty.get(url)
 
@@ -33,33 +33,14 @@ module PagesHelper
 
   def get_icon(data)
 
-    code = data.fetch('weather')[0].fetch('id')
+    code = data.fetch('currently').fetch('icon')
 
-    time = Time.new();
-
-    sunset = Time.at(data.fetch('sys').fetch('sunset'))
-
-    sunrise = Time.at(data.fetch('sys').fetch('sunrise'))
-
-    if(time.hour > sunset.hour) then
-      return "wi wi-owm-night-#{code}"
-    end
-    if(time.hour == sunset.hour && time.min >= sunset.min) then
-      return "wi wi-owm-night-#{code}"
-    end
-    if(time.hour < sunrise.hour) then
-      return "wi wi-owm-night-#{code}"
-    end
-    if(time.hour == sunrise.hour && time.min < sunrise.min) then
-      return "wi wi-owm-night-#{code}"
-    end
-
-    return "wi wi-owm-day-#{code}"
+    return "wi wi-forecast-io-#{code}"
   end
 
   def get_sunrise(data)
 
-    data = data.fetch('sys').fetch('sunrise')
+    data = data.fetch('daily').fetch('data')[0].fetch('sunriseTime')
 
     time = Time.at(data)
 
@@ -81,7 +62,7 @@ module PagesHelper
 
   def get_sunset(data)
 
-    data = data.fetch('sys').fetch('sunset')
+    data = data.fetch('daily').fetch('data')[0].fetch('sunsetTime')
 
     time = Time.at(data)
 
@@ -103,19 +84,17 @@ module PagesHelper
 
   def get_main(data)
 
-    data.fetch('weather')[0].fetch('description')
+    data.fetch('currently').fetch('summary')
 
   end
 
   def get_temp(data)
 
-    temp = data.fetch('main').fetch('temp')
+    temp = data.fetch('currently').fetch('temperature')
 
-    number = (1.8 * (temp - 273.15)) + 32
+    temp = temp.round(1)
 
-    number = number.round(1)
-
-    "#{number}°F"
+    "#{temp}°F"
   end
 
 end
