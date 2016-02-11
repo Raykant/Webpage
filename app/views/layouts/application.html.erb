@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html style="background-image: url(<%= reddit_search %>)">
 <head>
-  <title>Webpage</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title><%= yield(:title) %></title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
-
+<body >
+<%= render('layouts/header') %>
+<div>
+  <%= yield %>
+</div>
 </body>
 </html>
