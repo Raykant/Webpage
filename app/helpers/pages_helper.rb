@@ -5,7 +5,7 @@ module PagesHelper
 
   def reddit_search
 
-    url = 'https://www.reddit.com/r/EarthPorn/search.json?q=&limit=1&restrict_sr=on&sort=top&t=day'
+    url = 'https://www.reddit.com/r/EarthPorn/search.json?q=&restrict_sr=on&sort=hot&t=day&limit=1'
 
     response = HTTParty.get(url)
 
