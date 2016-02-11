@@ -16,9 +16,7 @@ module PagesHelper
 
   def get_time
     time = Time.new()
-
-    time.in_time_zone('Pacific Time (US & Canada)')
-
+    
     "#{time.hour}:#{time.min}"
   end
 
