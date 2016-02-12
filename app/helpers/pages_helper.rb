@@ -3,6 +3,37 @@ module PagesHelper
   require 'httparty'
   require 'json'
 
+  def get_welcome
+    content_tag(:div, :class=> "welcome col-md-6 col-md-offset-3") do
+      content_tag(:h1, get_message, :id => "welcometxt") +
+      content_tag(:h1, "", :id => "timetxt") +
+      content_tag(:h1, get_todomessage, :id => "todomessage")
+    end
+  end
+
+  def get_message
+    time = Time.new()
+    if(time.hour >= 1 && time.hour < 6) then
+      return "Can't sleep, Pieter?"
+    end
+
+    if(time.hour >= 5 && time.hour < 12) then
+      return "Good morning, Pieter."
+    end
+
+    if(time.hour >= 12 && time.hour < 17 ) then
+      return "Good afternoon, Pieter."
+    end
+
+    if(time.hour >= 17 && time.hour < 22) then
+      return "Welcome back, Pieter."
+    end
+
+    if(time.hour >= 22) then
+      return "Getting tired, Pieter?"
+    end
+  end
+
   def reddit_search
 
     url = 'https://www.reddit.com/r/EarthPorn/search.json?q=&restrict_sr=on&sort=top&t=hour&limit=1'
@@ -100,8 +131,7 @@ module PagesHelper
   def get_todo
 
     content_tag(:div, :class => "todo col-md-4 col-md-offset-1") do
-      content_tag(:h1, get_todomessage, :class => "todomessage") +
-          content_tag(:ul, get_todobody)
+      get_todobody
     end
 
   end
@@ -117,7 +147,27 @@ module PagesHelper
   end
 
   def get_todobody
-    ""
+    content_tag(:input, "", :type => "text", :class => "text-line", :placeholder => get_exampleitem) +
+    content_tag(:ul, :class => "todolist") do
+      content_tag(:li, content_tag(:h3, "Sample", :class => "todotext"), :class => "todoitem")
+    end
+  end
+
+  def get_exampleitem
+    num = rand(5)
+
+    return case num
+              when 0
+                "Read chapter 1 of ..."
+              when 1
+                "Finish Ch. 7 Prob ..."
+              when 2
+                "Write paragraph on ..."
+              when 3
+                "Finish programming ..."
+              when 4
+                "Model part for ..."
+            end
   end
 
   def get_calendarmessage

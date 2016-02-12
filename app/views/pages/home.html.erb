@@ -8,7 +8,7 @@
       var m = today.getMinutes();
       m = checkTime(m);
       h = checkTime(h);
-      document.getElementById('txt').innerHTML =
+      document.getElementById('timetxt').innerHTML =
           h + ":" + m;
       var t = setTimeout(startTime, 5000);
     }
@@ -21,10 +21,7 @@
 
 <body onload="startTime()">
   <div class="row">
-    <div class="welcome col-md-6 col-md-offset-3">
-      <h1>Welcome back, Pieter.</h1>
-      <h1 id="txt"></h1>
-    </div>
+    <%= get_welcome %>
   </div>
   <div class="row" id="dynamic">
     <%= get_weather %>
