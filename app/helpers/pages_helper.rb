@@ -5,7 +5,7 @@ module PagesHelper
 
   def reddit_search
 
-    url = 'https://www.reddit.com/r/EarthPorn/search.json?q=&restrict_sr=on&sort=hot&t=day&limit=1'
+    url = 'https://www.reddit.com/r/EarthPorn/search.json?q=&restrict_sr=on&sort=top&t=hour&limit=1'
 
     response = HTTParty.get(url)
 
@@ -95,6 +95,33 @@ module PagesHelper
     temp = temp.round(1)
 
     "#{temp}°F"
+  end
+
+  def get_todo
+
+    content_tag(:div, :class => "todo col-md-4 col-md-offset-1") do
+      content_tag(:h1, get_todomessage, :class => "todomessage") +
+          content_tag(:ul, get_todobody)
+    end
+
+  end
+
+  def get_calendar
+    content_tag(:div, :class => "calendar col-md-2 col-md-offset-1") do
+      content_tag(:h3, get_calendarmessage)
+    end
+  end
+
+  def get_todomessage
+    "What do you need to do?"
+  end
+
+  def get_todobody
+    ""
+  end
+
+  def get_calendarmessage
+    "You have no plans"
   end
 
 end
