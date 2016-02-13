@@ -26,7 +26,7 @@ module PagesHelper
     end
 
     if (time.hour >= 17 && time.hour < 22) then
-      return "Welcome back, Pieter."
+      return "Good evening, Pieter."
     end
 
     if (time.hour >= 22) then
