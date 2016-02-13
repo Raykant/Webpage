@@ -21,3 +21,7 @@ html {
     -o-background-size: cover;
     background-size: cover;
 }
+
+body {
+    padding-top: 60px;
+}
