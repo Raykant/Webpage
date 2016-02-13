@@ -25,7 +25,7 @@
 </div>
 <div class="row" id="dynamic">
   <%= get_weather %>
-  <div class="todo col-md-4 col-md-offset-1">
+  <div class="todo col-xs-4 col-xs-offset-1">
     <%= form_for(@todo) do |f| %>
         <%= f.text_field :item, :autocomplete => "off", :placeholder => get_exampleitem%>
         <%= f.submit "", class: "btn btn-primary", :id => "submitbtn" %>

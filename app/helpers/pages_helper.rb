@@ -4,7 +4,7 @@ module PagesHelper
   require 'json'
 
   def get_welcome
-    content_tag(:div, :class => "welcome col-md-6 col-md-offset-3") do
+    content_tag(:div, :class => "welcome col-xs-6 col-xs-offset-3") do
       content_tag(:h1, get_message, :id => "welcometxt") +
           content_tag(:h1, "", :id => "timetxt") +
           content_tag(:h1, get_todomessage, :id => "todomessage")
@@ -53,7 +53,7 @@ module PagesHelper
 
     data = JSON.parse(response.body)
 
-    content_tag(:div, :class => "weather col-md-2 col-md-offset-1") do
+    content_tag(:div, :class => "weather col-xs-2 col-xs-offset-1") do
       content_tag(:i, nil, :class => get_icon(data)) +
           content_tag(:h3, get_sunrise(data)) +
           content_tag(:h3, get_temp(data)) +
@@ -145,7 +145,7 @@ module PagesHelper
   end
 
   def get_calendar
-    content_tag(:div, :class => "calendar col-md-2 col-md-offset-1") do
+    content_tag(:div, :class => "calendar col-xs-2 col-xs-offset-1") do
       content_tag(:h3, get_calendarmessage)
     end
   end
