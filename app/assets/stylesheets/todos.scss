@@ -1,0 +1,149 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.link{
+  padding:0.15em 0 0.5em 1.5em;
+  margin-bottom:0.2em;
+  text-indent:0.8em;
+  font-weight:bold;
+  list-style:none;
+  background: no-repeat 0 1em;
+  background-size: 22px 22px;
+}
+
+#reddit{
+  background-image: image-url("reddit_icon.png");
+}
+
+#facebook{
+  background-image: image-url("facebook_icon.png");
+}
+
+#gmail{
+  background-image: image-url("gmail_icon.png");
+}
+
+#haiku{
+  background-image: image-url("haiku_icon.png");
+}
+
+#crunchyroll{
+  background-image: image-url("crunchyroll_icon.png");
+}
+
+#twitch{
+  background-image: image-url("twitch_icon.png");
+}
+
+#plex{
+  background-image: image-url("plex_icon.png");
+}
+
+#sonarr{
+  background-image: image-url("sonarr_icon.png");
+}
+
+#couchpotato{
+  background-image: image-url("couchpotato_icon.png");
+}
+
+#sabnzbd{
+  background-image: image-url("sabnzbd_icon.png")
+}
+
+body{
+  background:transparent;
+}
+
+.welcome{
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#welcometxt{
+  font-size: 52px;
+}
+
+#timetxt{
+  font-size: 52px;
+}
+
+#dynamic{
+  padding-top: 5vh;
+}
+
+h1{color: #FFFFFF;}
+
+h2{color: #FFFFFF;}
+
+h3{color: #FFFFFF;}
+
+#todomessage{
+  text-align: center;
+}
+
+.weather{
+  padding-top: 1px;
+}
+
+.weather h3{
+  text-transform: capitalize;
+}
+
+.wi {
+  font-size: 48px;
+  color: #FFFFFF;
+}
+
+input {
+  width: 100%;
+  max-width: 20em;
+  font-size: 22px;
+  background-color: transparent;
+  color: #FFFFFF;
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid #eeeeee 3px;
+  padding-top: 8px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: #cccccc;
+}
+
+.todolist{
+  list-style: none;
+  padding: 2px 0 0 0;
+  margin: 0 0 0 0;
+}
+
+.todoitem a{
+  color: #FFFFFF;
+}
+
+#submitbtn {
+  background: transparent;
+  border: none;
+  font-size:0;
+  height: 0px;
+  widht: 0px;
+  padding: 0 0 0 0;
+}
+
+.button_to {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.deletebtn{
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+  border-width: 2px;
+  border-color: rgba(255, 255, 255, 1);
+  padding: 0px 0px 0px 0px;
+}
