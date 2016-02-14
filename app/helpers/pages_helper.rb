@@ -174,6 +174,6 @@ module PagesHelper
   end
 
   def get_calendarmessage
-    "You have no plans"
+    "#{request.remote_ip}"
   end
 end
