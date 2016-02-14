@@ -47,7 +47,13 @@ module PagesHelper
 
   def get_weather
 
-    url = 'https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/37.4420,-122.1771'
+    coordinates = Geocoder.coordinates(request.remote_ip)
+
+    if Rails.env.development? then
+      coordinates = Geocoder.coordinates('108.69.211.26')
+    end
+
+    url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{coordinates.first},#{coordinates.last}"
 
     response = HTTParty.get(url)
 
@@ -174,6 +180,7 @@ module PagesHelper
   end
 
   def get_calendarmessage
-    "#{request.remote_ip}"
+
+    "Something here."
   end
 end
