@@ -42,7 +42,13 @@ module PagesHelper
 
     json = JSON.parse(response.body)
 
-    json.fetch('data').fetch('children')[0].fetch('data').fetch('url')
+    link = json.fetch('data').fetch('children')[0].fetch('data').fetch('url')
+
+    if !(/\.(jpg|jpeg|png|gif)/ =~ link) then
+      link += '.jpg'
+    end
+
+    return link
   end
 
   def get_weather
@@ -137,16 +143,14 @@ module PagesHelper
 
   def get_todo
     content_tag(:ul, :class => "todolist") do
-      content_tag(:ul, :class => "todolist") do
-        Todo.all.each do |todo|
-          concat(
-              content_tag(:li) do
-                content_tag(:h3, :class => "todoitem") do
-                  link_to(todo.item, "todos/#{todo.id}", :class => "itemlink", :method => :delete)
-                end
+      Todo.all.each do |todo|
+        concat(
+            content_tag(:li) do
+              content_tag(:h3, :class => "todoitem") do
+                link_to(todo.item, "todos/#{todo.id}", :class => "itemlink", :method => :delete)
               end
-          )
-        end
+            end
+        )
       end
     end
   end

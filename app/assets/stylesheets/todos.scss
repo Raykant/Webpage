@@ -106,6 +106,7 @@ input {
   border-right: none;
   border-bottom: solid #eeeeee 3px;
   padding-top: 8px;
+  margin-bottom: 3px;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -116,6 +117,11 @@ input {
   list-style: none;
   padding: 2px 0 0 0;
   margin: 0 0 0 0;
+}
+
+.todoitem{
+  margin-top: 0px;
+  margin-bottom: 30px;
 }
 
 .todoitem a{
@@ -129,20 +135,4 @@ input {
   height: 0px;
   widht: 0px;
   padding: 0 0 0 0;
-}
-
-.button_to {
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-  display: inline-block;
-}
-
-.deletebtn{
-  width: 100%;
-  height: 100%;
-  border-radius: 0px;
-  border-width: 2px;
-  border-color: rgba(255, 255, 255, 1);
-  padding: 0px 0px 0px 0px;
 }
