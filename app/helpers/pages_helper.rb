@@ -67,7 +67,7 @@ module PagesHelper
 
     content_tag(:div, :class => "weather col-xs-2 col-xs-offset-1") do
       content_tag(:i, nil, :class => get_icon(data)) +
-          content_tag(:h3, Geocoder.search("#{coordinates.first},#{coordinates.last}").first.city) +
+          content_tag(:h3, "#{location.fetch(city)}") +
           content_tag(:h3, get_sunrise(data)) +
           content_tag(:h3, get_temp(data)) +
           content_tag(:h3, get_main(data)) +
