@@ -53,7 +53,7 @@ module PagesHelper
 
   def get_weather
 
-    location = HTTParty.get("http://freegeoip.net/json/#{request_ip}")
+    location = HTTParty.get("http://freegeoip.net/json/#{request.remote_ip}")
 
     if Rails.env.development? then
       location = HTTParty.get("http://freegeoip.net/json/50.131.201.196")
