@@ -53,19 +53,13 @@ module PagesHelper
 
   def get_weather
 
-    coordinates = Geocoder.coordinates(request.remote_ip)
-
-    if coordinates.nil? then
-      return content_tag(:h3, :class => "weather col-xs-2 col-xs-offset-1") do
-        "Failed to geocode"
-      end
-    end
+    location = HTTParty.get("http://freegeoip.net/json/#{remote_ip}")
 
     if Rails.env.development? then
-      coordinates = Geocoder.coordinates('108.69.211.26')
+      location = HTTParty.get("http://freegeoip.net/json/50.131.201.196")
     end
 
-    url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{coordinates.first},#{coordinates.last}"
+    url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{location.fetch("latitude")},#{location.fetch("longitude")}"
 
     response = HTTParty.get(url)
 
