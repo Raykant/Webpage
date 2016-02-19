@@ -13,7 +13,7 @@ module PagesHelper
 
   def get_message
     time = Time.new()
-    if (time.hour >= 1 && time.hour < 6) then
+    if (time.hour >= 2 && time.hour < 6) then
       return "Can't sleep, Pieter?"
     end
 
@@ -29,7 +29,7 @@ module PagesHelper
       return "Good evening, Pieter."
     end
 
-    if (time.hour >= 22) then
+    if (time.hour >= 22 || time.hour < 2) then
       return "Getting tired, Pieter?"
     end
   end
