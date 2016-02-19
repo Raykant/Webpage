@@ -40,10 +40,6 @@ module PagesHelper
 
     response = HTTParty.get(url)
 
-    while response == nil do
-      response = HTTParty.get(url)
-    end
-
     json = JSON.parse(response.body)
 
     link = json.fetch('data').fetch('children')[0].fetch('data').fetch('url')
@@ -59,6 +55,12 @@ module PagesHelper
 
     coordinates = Geocoder.coordinates(request.remote_ip)
 
+    if coordinates.nil? then
+      return content_tag(:h3, :class => "weather col-xs-2 col-xs-offset-1") do
+        "Failed to geocode"
+      end
+    end
+
     if Rails.env.development? then
       coordinates = Geocoder.coordinates('108.69.211.26')
     end
@@ -66,10 +68,6 @@ module PagesHelper
     url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{coordinates.first},#{coordinates.last}"
 
     response = HTTParty.get(url)
-
-    while response == nil do
-      response = HTTParty.get(url)
-    end
 
     data = JSON.parse(response.body)
 
