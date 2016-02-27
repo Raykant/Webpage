@@ -53,7 +53,7 @@ module PagesHelper
 
   def get_weather
 
-    location = Location.find_by_ip(request.remote_ip)
+    location = Locations.find_by_ip(request.remote_ip)
 
     if location.empty? then
       locurl = "http://freegeoip.net/json/#{request.remote_ip}"
@@ -73,7 +73,7 @@ module PagesHelper
 
     content_tag(:div, :class => "weather col-xs-2 col-xs-offset-1") do
       content_tag(:i, nil, :class => get_icon(data)) +
-          content_tag(:hd, location.city) + 
+          content_tag(:hd, location.city) +
           content_tag(:h3, get_sunrise(data)) +
           content_tag(:h3, get_temp(data)) +
           content_tag(:h3, get_main(data)) +
