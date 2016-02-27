@@ -53,13 +53,19 @@ module PagesHelper
 
   def get_weather
 
-    location = HTTParty.get("http://freegeoip.net/json/#{request.remote_ip}")
+    location = Location.find_by_ip(request.remote_ip)
 
-    if Rails.env.development? then
-      location = HTTParty.get("http://freegeoip.net/json/50.131.201.196")
+    if location.empty? then
+      locurl = "http://freegeoip.net/json/#{request.remote_ip}"
+
+      spotresponse = HTTParty.get(locurl)
+
+      location = Location.new(:ip => request.remote_ip, :lat => spotresponse.fetch('latitude'), :lon => spotresponse.fetch('longitude'), :city => spotresponse.fetch('city'))
+
+      location.save
     end
 
-    url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{location.fetch("latitude")},#{location.fetch("longitude")}"
+    url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{location.lon},#{location.lat}"
 
     response = HTTParty.get(url)
 
@@ -67,7 +73,7 @@ module PagesHelper
 
     content_tag(:div, :class => "weather col-xs-2 col-xs-offset-1") do
       content_tag(:i, nil, :class => get_icon(data)) +
-          content_tag(:h3, "#{location.fetch("city")}") +
+          content_tag(:hd, location.city) + 
           content_tag(:h3, get_sunrise(data)) +
           content_tag(:h3, get_temp(data)) +
           content_tag(:h3, get_main(data)) +
@@ -140,7 +146,6 @@ module PagesHelper
 
     "#{temp}°F"
   end
-
   def get_todo
     content_tag(:ul, :class => "todolist") do
       Todo.all.each do |todo|
