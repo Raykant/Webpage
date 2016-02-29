@@ -162,12 +162,6 @@ module PagesHelper
     end
   end
 
-  def get_calendar
-    content_tag(:div, :class => "calendar col-xs-2 col-xs-offset-1") do
-      content_tag(:h3, get_calendarmessage)
-    end
-  end
-
   def get_todomessage
     if Todo.count > 0 then
       return "Here's what I have for you:"
@@ -189,10 +183,5 @@ module PagesHelper
              when 4
                "Model part for ..."
            end
-  end
-
-  def get_calendarmessage
-
-    "Something here."
   end
 end
