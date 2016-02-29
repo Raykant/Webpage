@@ -65,11 +65,13 @@ module PagesHelper
       location.save
     end
 
-    url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{location.lat},#{location.lon}"
+    data = Rails.cache.fetch("weather", expires_in: 15.minutes) do
+      url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{location.lat},#{location.lon}"
 
-    response = HTTParty.get(url)
+      response = HTTParty.get(url)
 
-    data = JSON.parse(response.body)
+      JSON.parse(response.body)
+    end
 
     content_tag(:div, :class => "weather col-xs-2 col-xs-offset-1") do
       content_tag(:i, nil, :class => get_icon(data)) +
