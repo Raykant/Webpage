@@ -53,14 +53,14 @@ module PagesHelper
 
   def get_weather
 
-    location = Locations.find_by_ip(request.remote_ip)
+    location = Location.find_by_ip(request.remote_ip)
 
-    if location.empty? then
+    if location.nil? then
       locurl = "http://freegeoip.net/json/#{request.remote_ip}"
 
       spotresponse = HTTParty.get(locurl)
 
-      location = Location.new(:ip => request.remote_ip, :lat => spotresponse.fetch('latitude'), :lon => spotresponse.fetch('longitude'), :city => spotresponse.fetch('city'))
+      location = Location.new(:ip => request.remote_ip, :lat => spotresponse.fetch("latitude"), :lon => spotresponse.fetch('longitude'), :city => spotresponse.fetch('city'))
 
       location.save
     end
