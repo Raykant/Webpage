@@ -65,7 +65,7 @@ module PagesHelper
       location.save
     end
 
-    url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{location.lon},#{location.lat}"
+    url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{location.lat},#{location.lon}"
 
     response = HTTParty.get(url)
 
