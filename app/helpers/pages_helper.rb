@@ -36,12 +36,13 @@ module PagesHelper
 
   def reddit_search
 
-    url = 'https://www.reddit.com/r/earthporn.json?limit=1'
+    json = Rails.cache.fetch("weather", expires_in: 45.minutes) do
+      url = 'https://www.reddit.com/r/earthporn.json?limit=1'
 
-    response = HTTParty.get(url)
+      response = HTTParty.get(url)
 
-    json = JSON.parse(response.body)
-
+      JSON.parse(response.body)
+    end
     link = json.fetch('data').fetch('children')[0].fetch('data').fetch('url')
 
     if !(/\.(jpg|jpeg|png|gif)/ =~ link) then
