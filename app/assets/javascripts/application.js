@@ -34,4 +34,3 @@ function checkTime(i) {
 function startUp(){
     startTime();
 }
-

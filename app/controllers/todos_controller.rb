@@ -6,7 +6,11 @@ class TodosController < ApplicationController
   def destroy
     @todo = Todo.find(params[:id])
     @todo.destroy
-    redirect_to('')
+    respond_to do |format|
+      format.html { redirect_to root_path }
+
+      format.js {}
+    end
   end
 
   def show
@@ -17,7 +21,11 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
     @todo.save
-    redirect_to('')
+    respond_to do |format|
+      format.html { redirect_to root_path }
+
+      format.js {}
+    end
   end
 
   def update
@@ -26,8 +34,8 @@ class TodosController < ApplicationController
 
   private
 
-    def todo_params
-      params.require(:todo).permit(:item)
-    end
+  def todo_params
+    params.require(:todo).permit(:item)
+  end
 
 end

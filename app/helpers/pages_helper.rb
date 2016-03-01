@@ -152,9 +152,9 @@ module PagesHelper
     content_tag(:ul, :class => "todolist") do
       Todo.all.each do |todo|
         concat(
-            content_tag(:li) do
+            content_tag(:li, id: "#{todo.id}") do
               content_tag(:h3, :class => "todoitem") do
-                link_to(todo.item, "todos/#{todo.id}", :class => "itemlink", :method => :delete)
+                link_to(todo.item, "todos/#{todo.id}", :class => "itemlink", :method => :delete, remote: true)
               end
             end
         )

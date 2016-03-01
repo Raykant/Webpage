@@ -1,6 +1,7 @@
 <%= provide(:title, "Welcome Back") %>
 
 <head>
+  <%= javascript_include_tag :defaults %>
 </head>
 
 <body onload="startUp()">
@@ -10,7 +11,7 @@
 <div class="row" id="dynamic">
   <%= get_weather %>
   <div class="todo col-xs-4 col-xs-offset-1">
-    <%= form_for(@todo) do |f| %>
+    <%= form_for(@todo, remote: true) do |f| %>
         <%= f.text_field :item, :autocomplete => "off", :placeholder => get_exampleitem%>
         <%= f.submit "", class: "btn btn-primary", :id => "submitbtn" %>
     <% end %>
