@@ -14,5 +14,11 @@ Rails.application.routes.draw do
 
   get 'weather' => 'pages#weather'
 
+  get 'todolist' => 'pages#todo'
+
+  get 'welcome' => 'pages#welcome'
+
+  get 'todomsg' => 'pages#todomsg'
+
   resources :todos
 end

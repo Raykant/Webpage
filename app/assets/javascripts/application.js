@@ -21,9 +21,7 @@ function startTime() {
     var m = today.getMinutes();
     m = checkTime(m);
     hour = checkTime(hour);
-    document.getElementById('timetxt').innerHTML =
-        hour + ":" + m;
-
+    document.getElementById('timetxt').innerHTML = hour + ":" + m;
     var t = setTimeout(startTime, 5000);
 }
 
@@ -42,12 +40,39 @@ function welcomeMsg(){
     var t = setTimeout(welcomeMsg, 60000);
 }
 
-$.ajax({
-    url: "/weather"
-}).done(function(html) {
-    console.log(html);
-    return $(".weather").append(html);
-});
+function setWeather(){
+    $.ajax({
+        url: "/weather"
+    }).done(function(html) {
+        return $(".weather").append(html);
+    });
+}
+
+function setTodo(){
+    $.ajax({
+        url: "/todolist"
+    }).done(function(html) {
+        $(".todo").append(html);
+        startTime();
+        welcomeMsg();
+    });
+}
+
+function setWelcome(){
+    $.ajax({
+        url: "/welcome"
+    }).done(function(html) {
+        return $("#welcome").append(html);
+    });
+}
+
+function setTodoMsg(){
+    $.ajax({
+        url: "/todomsg"
+    }).done(function(html) {
+        return document.getElementById('todomessage').innerHTML = html;
+    });
+}
 
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
@@ -55,6 +80,7 @@ function checkTime(i) {
 }
 
 function startUp(){
-    startTime();
-    welcomeMsg();
+    setWelcome();
+    setWeather();
+    setTodo();
 }
