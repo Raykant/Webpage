@@ -17,14 +17,37 @@
 
 function startTime() {
     var today = new Date();
-    var h = today.getHours();
+    var hour = today.getHours();
     var m = today.getMinutes();
     m = checkTime(m);
-    h = checkTime(h);
+    hour = checkTime(hour);
     document.getElementById('timetxt').innerHTML =
-        h + ":" + m;
+        hour + ":" + m;
+
     var t = setTimeout(startTime, 5000);
 }
+
+function welcomeMsg(){
+    var today = new Date();
+    var hour = today.getHours();
+    var msg = "";
+    if(hour < 2 || hour >= 22) msg = "Getting tired, Pieter?";
+    else if(hour >= 2 && hour < 6) msg = "Can't sleep, Pieter?";
+    else if(hour >= 6 && hour < 10) msg = "Good morning, Pieter.";
+    else if(hour >= 10 && hour < 12) msg = "How are you, Pieter?";
+    else if(hour >= 12 && hour < 17) msg = "Good afternoon, Pieter.";
+    else if(hour >= 17 && hour < 22) msg = "Good evening, Pieter.";
+
+    document.getElementById('welcometxt').innerHTML = msg;
+    var t = setTimeout(welcomeMsg, 60000);
+}
+
+$.ajax({
+    url: "/weather"
+}).done(function(html) {
+    console.log(html);
+    return $(".weather").append(html);
+});
 
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
@@ -33,4 +56,5 @@ function checkTime(i) {
 
 function startUp(){
     startTime();
+    welcomeMsg();
 }

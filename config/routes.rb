@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   get 'delete' => 'todos#delete'
 
+  get 'weather' => 'pages#weather'
+
   resources :todos
 end

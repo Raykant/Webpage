@@ -5,32 +5,9 @@ module PagesHelper
 
   def get_welcome
     content_tag(:div, :class => "welcome col-xs-6 col-xs-offset-3") do
-      content_tag(:h1, get_message, :id => "welcometxt") +
+      content_tag(:h1, "", :id => "welcometxt") +
           content_tag(:h1, "", :id => "timetxt") +
           content_tag(:h1, get_todomessage, :id => "todomessage")
-    end
-  end
-
-  def get_message
-    time = Time.new()
-    if (time.hour >= 2 && time.hour < 6) then
-      return "Can't sleep, Pieter?"
-    end
-
-    if (time.hour >= 5 && time.hour < 12) then
-      return "Good morning, Pieter."
-    end
-
-    if (time.hour >= 12 && time.hour < 17) then
-      return "Good afternoon, Pieter."
-    end
-
-    if (time.hour >= 17 && time.hour < 22) then
-      return "Good evening, Pieter."
-    end
-
-    if (time.hour >= 22 || time.hour < 2) then
-      return "Getting tired, Pieter?"
     end
   end
 
@@ -75,14 +52,12 @@ module PagesHelper
       JSON.parse(response.body)
     end
 
-    content_tag(:div, :class => "weather col-xs-2 col-xs-offset-1") do
-      content_tag(:i, nil, :class => get_icon(data)) +
-          content_tag(:h3, location.city) +
-          content_tag(:h3, get_sunrise(data)) +
-          content_tag(:h3, get_temp(data)) +
-          content_tag(:h3, get_main(data)) +
-          content_tag(:h3, get_sunset(data))
-    end
+    content_tag(:i, nil, :class => get_icon(data)) +
+    content_tag(:h3, location.city) +
+    content_tag(:h3, get_sunrise(data)) +
+    content_tag(:h3, get_temp(data)) +
+    content_tag(:h3, get_main(data)) +
+    content_tag(:h3, get_sunset(data))
   end
 
   def get_icon(data)
