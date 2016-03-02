@@ -44,7 +44,7 @@ function setWeather(){
     $.ajax({
         url: "/weather"
     }).done(function(html) {
-        return $(".weather").append(html);
+        $(".weather").append(html);
     });
 }
 
@@ -53,8 +53,6 @@ function setTodo(){
         url: "/todolist"
     }).done(function(html) {
         $(".todo").append(html);
-        startTime();
-        welcomeMsg();
     });
 }
 
@@ -62,7 +60,9 @@ function setWelcome(){
     $.ajax({
         url: "/welcome"
     }).done(function(html) {
-        return $("#welcome").append(html);
+        $("#welcome").append(html);
+        startTime();
+        welcomeMsg();
     });
 }
 
@@ -70,7 +70,7 @@ function setTodoMsg(){
     $.ajax({
         url: "/todomsg"
     }).done(function(html) {
-        return document.getElementById('todomessage').innerHTML = html;
+        document.getElementById('todomessage').innerHTML = html;
     });
 }
 
@@ -78,7 +78,7 @@ function setBackground(){
     $.ajax({
         url: "/background"
     }).done(function(html) {
-        return document.body.background = html;
+        document.body.background = html;
     });
 }
 
