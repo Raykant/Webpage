@@ -74,6 +74,14 @@ function setTodoMsg(){
     });
 }
 
+function setBackground(){
+    $.ajax({
+        url: "/background"
+    }).done(function(html) {
+        return document.body.background = html;
+    });
+}
+
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
@@ -83,4 +91,5 @@ function startUp(){
     setWelcome();
     setWeather();
     setTodo();
+    setBackground();
 }

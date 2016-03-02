@@ -20,5 +20,7 @@ Rails.application.routes.draw do
 
   get 'todomsg' => 'pages#todomsg'
 
+  get 'background' => 'pages#background'
+
   resources :todos
 end

@@ -25,4 +25,8 @@ class PagesController < ApplicationController
     render :layout => false
   end
 
+  def background
+    render :layout => false
+  end
+
 end
