@@ -27,6 +27,10 @@ class PagesController < ApplicationController
 
   def background
     render :layout => false
+
+    respond_to do |format|
+      format.js {}
+    end
   end
 
 end
