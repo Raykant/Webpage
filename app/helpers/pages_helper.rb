@@ -23,10 +23,11 @@ module PagesHelper
 
     link = json.fetch('data').fetch('children')[0].fetch('data').fetch('url')
 
-    if !(/\.(jpg|jpeg|png|gif)/ =~ link) then
-      link += '.jpg'
+    if link.include? "imgur" then
+      if !(/\.(jpg|jpeg|png|gif)/ =~ link) then
+        link += '.png'
+      end
     end
-
     return link
   end
 
@@ -53,11 +54,11 @@ module PagesHelper
     end
 
     content_tag(:i, nil, :class => get_icon(data)) +
-    content_tag(:h3, location.city) +
-    content_tag(:h3, get_sunrise(data)) +
-    content_tag(:h3, get_temp(data)) +
-    content_tag(:h3, get_main(data)) +
-    content_tag(:h3, get_sunset(data))
+        content_tag(:h3, location.city) +
+        content_tag(:h3, get_sunrise(data)) +
+        content_tag(:h3, get_temp(data)) +
+        content_tag(:h3, get_main(data)) +
+        content_tag(:h3, get_sunset(data))
   end
 
   def get_icon(data)
@@ -125,6 +126,7 @@ module PagesHelper
 
     "#{temp}°F"
   end
+
   def get_todo
     content_tag(:ul, :class => "todolist") do
       Todo.all.each do |todo|
