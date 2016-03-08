@@ -55,10 +55,8 @@ module PagesHelper
 
     content_tag(:i, nil, :class => get_icon(data)) +
         content_tag(:h3, location.city) +
-        content_tag(:h3, get_sunrise(data)) +
         content_tag(:h3, get_temp(data)) +
-        content_tag(:h3, get_main(data)) +
-        content_tag(:h3, get_sunset(data))
+        content_tag(:h3, get_main(data))
   end
 
   def get_icon(data)
@@ -66,50 +64,6 @@ module PagesHelper
     code = data.fetch('currently').fetch('icon')
 
     return "wi wi-forecast-io-#{code}"
-  end
-
-  def get_sunrise(data)
-
-    data = data.fetch('daily').fetch('data')[0].fetch('sunriseTime')
-
-    time = Time.at(data)
-
-    hour = time.hour
-
-    if hour < 10 then
-      hour = "0#{hour}"
-    end
-
-    min = time.min
-
-    if min < 10 then
-      min = "0#{min}"
-    end
-
-    "Sunrise #{hour}:#{min}"
-
-  end
-
-  def get_sunset(data)
-
-    data = data.fetch('daily').fetch('data')[0].fetch('sunsetTime')
-
-    time = Time.at(data)
-
-    hour = time.hour
-
-    if hour < 10 then
-      hour = "0#{hour}"
-    end
-
-    min = time.min
-
-    if min < 10 then
-      min = "0#{min}"
-    end
-
-    "Sunset #{hour}:#{min}"
-
   end
 
   def get_main(data)
