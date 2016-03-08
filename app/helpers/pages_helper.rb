@@ -61,7 +61,7 @@ module PagesHelper
 
   def get_icon(data)
 
-    code = data.fetch('currently').fetch('icon')
+    code = data.fetch('hourly').fetch('icon')
 
     return "wi wi-forecast-io-#{code}"
   end
