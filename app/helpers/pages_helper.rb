@@ -55,8 +55,7 @@ module PagesHelper
 
     content_tag(:i, nil, :class => get_icon(data)) +
         content_tag(:h3, location.city) +
-        content_tag(:h3, get_temp(data)) +
-        content_tag(:h3, get_main(data))
+        content_tag(:h3, get_temp(data))
   end
 
   def get_icon(data)
@@ -64,12 +63,6 @@ module PagesHelper
     code = data.fetch('hourly').fetch('icon')
 
     return "wi wi-forecast-io-#{code}"
-  end
-
-  def get_main(data)
-
-    data.fetch('currently').fetch('summary')
-
   end
 
   def get_temp(data)
