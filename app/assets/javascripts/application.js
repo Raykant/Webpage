@@ -82,6 +82,14 @@ function setBackground(){
     });
 }
 
+function setLinks(){
+    $.ajax({
+        url: "/links"
+    }).done(function(html) {
+        document.getElementById('links').innerHTML = html;
+    });
+}
+
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
@@ -91,5 +99,6 @@ function startUp(){
     setWelcome();
     setWeather();
     setTodo();
+    setLinks();
     setBackground();
 }

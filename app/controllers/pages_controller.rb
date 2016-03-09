@@ -33,4 +33,9 @@ class PagesController < ApplicationController
     end
   end
 
+  def links
+    render :layout => false
+
+  end
+
 end

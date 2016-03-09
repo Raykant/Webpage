@@ -22,5 +22,7 @@ Rails.application.routes.draw do
 
   get 'background' => 'pages#background'
 
+  get 'links' => 'pages#links'
+
   resources :todos
 end
