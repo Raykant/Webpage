@@ -48,11 +48,11 @@ function setWeather(){
     });
 }
 
-function setTodo(){
+function setTodos(){
     $.ajax({
         url: "/todolist"
     }).done(function(html) {
-        $(".todo").append(html);
+        $("#todos").append(html);
     });
 }
 
@@ -74,19 +74,19 @@ function setTodoMsg(){
     });
 }
 
+function setTodo(){
+    $.ajax({
+        url: "/todoform"
+    }).done(function(html) {
+        document.getElementById("todo").innerHTML = html;
+    });
+}
+
 function setBackground(){
     $.ajax({
         url: "/background"
     }).done(function(html) {
         document.body.background = html;
-    });
-}
-
-function setLinks(){
-    $.ajax({
-        url: "/links"
-    }).done(function(html) {
-        document.getElementById('links').innerHTML = html;
     });
 }
 
@@ -98,7 +98,9 @@ function checkTime(i) {
 function startUp(){
     setWelcome();
     setWeather();
+    setTodos();
     setTodo();
-    setLinks();
     setBackground();
 }
+
+$("#todomessage").click(setTodo());

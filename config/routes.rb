@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'weather' => 'pages#weather'
 
-  get 'todolist' => 'pages#todo'
+  get 'todolist' => 'pages#todos'
 
   get 'welcome' => 'pages#welcome'
 

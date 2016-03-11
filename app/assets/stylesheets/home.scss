@@ -1,23 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.linklist{
-  list-style: none;
-}
 
-.linki{
-  height: 30px;
-  width: 30px;
-}
 
-.link{
-  display: inline-block;
-  margin-top: 1em;
-  margin-right: 1em;
-}
-
-body{
-  background:transparent;
+#welcome{
+  margin-top: 30px;
 }
 
 .welcome{
@@ -26,38 +13,24 @@ body{
 }
 
 #welcometxt{
-  font-size: 52px;
+  font-size: 68px;
 }
 
 #timetxt{
-  font-size: 52px;
+  font-size: 140px;
 }
 
 #dynamic{
-  padding-top: 5vh;
-}
-
-h1{color: #FFFFFF;}
-
-h2{color: #FFFFFF;}
-
-h3{color: #FFFFFF;}
-
-#todomessage{
-  text-align: center;
+  margin-top: 80px;
 }
 
 .weather{
-  padding-top: 1px;
+  float:right;
+  text-align: right;
 }
 
 .weather h3{
   text-transform: capitalize;
-}
-
-.wi {
-  font-size: 48px;
-  color: #FFFFFF;
 }
 
 input {
@@ -70,8 +43,6 @@ input {
   border-left: none;
   border-right: none;
   border-bottom: solid #eeeeee 3px;
-  padding-top: 8px;
-  margin-bottom: 3px;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -80,8 +51,8 @@ input {
 
 .todolist{
   list-style: none;
-  padding: 2px 0 0 0;
-  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  margin: 5px 0 0 0;
 }
 
 .todoitem{

@@ -11,14 +11,12 @@ class PagesController < ApplicationController
     render :layout => false
   end
 
-  def todo
+  def todos
     render :layout => false
-
   end
 
   def welcome
     render :layout => false
-
   end
 
   def todomsg

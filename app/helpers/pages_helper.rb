@@ -4,10 +4,9 @@ module PagesHelper
   require 'json'
 
   def get_welcome
-    content_tag(:div, :class => "welcome col-xs-6 col-xs-offset-3") do
+    content_tag(:div, :class => "welcome col-xs-8 col-xs-offset-2") do
       content_tag(:h1, "", :id => "welcometxt") +
-          content_tag(:h1, "", :id => "timetxt") +
-          content_tag(:h1, get_todomessage, :id => "todomessage")
+      content_tag(:h1, "", :id => "timetxt")
     end
   end
 

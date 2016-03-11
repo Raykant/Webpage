@@ -8,16 +8,21 @@
 
 </div>
 <div class="row" id="dynamic">
-  <div class="weather col-xs-2 col-xs-offset-1">
+  <div class="container-fluid">
+    <div class="col-xs-3" id="todos">
 
-  </div>
-  <div class="todo col-xs-4 col-xs-offset-1">
-    <%= form_for(@todo, remote: true) do |f| %>
-        <%= f.text_field :item, :autocomplete => "off", :placeholder => get_exampleitem%>
-        <%= f.submit "", class: "btn btn-primary", :id => "submitbtn" %>
-    <% end %>
-  </div>
-  <div class="col-xs-2 col-xs-offset-1" id="links">
+    </div>
+    <div class="col-xs-4 col-xs-offset-1" id="todo">
+      <div class="formcontainer">
+        <%= form_for(@todo, remote: true) do |f| %>
+            <%= f.text_field :item, :autocomplete => "off", :placeholder => get_exampleitem %>
+            <%= f.submit "", class: "btn btn-primary", :id => "submitbtn" %>
+        <% end %>
+      </div>
+
+    </div>
+    <div class="weather col-xs-3">
+    </div>
   </div>
 </div>
 </body>
