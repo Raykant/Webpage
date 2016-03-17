@@ -12,22 +12,33 @@ module PagesHelper
 
   def reddit_search
 
-    json = Rails.cache.fetch("reddit", expires_in: 45.minutes) do
-      url = 'https://www.reddit.com/r/earthporn.json?limit=1'
-
-      response = HTTParty.get(url)
-
-      JSON.parse(response.body)
+    Rails.cache.fetch("reddit", expires_in: 45.minutes) do
+      reddit_cache
     end
+  end
 
-    link = json.fetch('data').fetch('children')[0].fetch('data').fetch('url')
+  def reddit_cache
+    url = 'https://www.reddit.com/r/EarthPorn/.json?q=&restrict_sr=on&sort=hot&t=day&limit=5'
+    response = HTTParty.get(url)
+    puts "Got reddit request"
 
-    if link.include? "imgur" then
-      if !(/\.(jpg|jpeg|png|gif)/ =~ link) then
-        link += '.png'
+    json = JSON.parse(response.body)
+
+    puts "starting loop"
+
+    i = 0;
+    while(i < 5) do
+      puts i
+      url = json.fetch('data').fetch('children')[i].fetch('data').fetch('url')
+
+      if url.include? "imgur" then
+        if !(/\.(jpg|jpeg|png|gif)/ =~ url) then
+          url += '.png'
+        end
+        return url;
       end
+      i += 1
     end
-    return link
   end
 
   def get_weather

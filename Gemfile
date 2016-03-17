@@ -27,6 +27,8 @@ gem 'httparty'
 
 gem 'dalli'
 
+gem 'fastimage'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
