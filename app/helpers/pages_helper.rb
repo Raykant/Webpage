@@ -56,7 +56,7 @@ module PagesHelper
     end
 
     data = Rails.cache.fetch("weather", expires_in: 15.minutes) do
-      url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{location.lat},#{location.lon}"
+        url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{location.lat},#{location.lon}"
 
       response = HTTParty.get(url)
 
@@ -70,7 +70,7 @@ module PagesHelper
 
   def get_icon(data)
 
-    code = data.fetch('hourly').fetch('icon')
+    code = data.fetch('currently').fetch('icon')
 
     return "wi wi-forecast-io-#{code}"
   end
