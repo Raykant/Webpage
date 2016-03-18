@@ -15,24 +15,13 @@
  */
 
 body {
+    background:transparent;
     background: no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
-
-.navbar {
-    text-align: center;
-}
-
-.nav{
-    display: inline-block;
-    float:none
-}
-
-body{
-    background:transparent;
+    display:none;
 }
 
 h1{color: #FFFFFF;}
@@ -40,10 +29,6 @@ h1{color: #FFFFFF;}
 h2{color: #FFFFFF;}
 
 h3{color: #FFFFFF;}
-
-.chidden{
-    visibility: hidden;
-}
 
 .linklist{
     list-style: none;

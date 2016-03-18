@@ -74,19 +74,19 @@ function setTodoMsg(){
     });
 }
 
-function setTodo(){
-    $.ajax({
-        url: "/todoform"
-    }).done(function(html) {
-        document.getElementById("todo").innerHTML = html;
-    });
-}
-
 function setBackground(){
     $.ajax({
         url: "/background"
     }).done(function(html) {
-        document.body.background = html;
+        var img = new Image();
+        img.onload = function() {
+            $("body").css('backgroundImage', "url(" + img.src + ")");
+            //the callback function call here
+            console.log("Image loaded.");
+            $("body").fadeIn(2000);
+        };
+        console.log("Found path: " + html);
+        img.src = html;
     });
 }
 
@@ -99,8 +99,5 @@ function startUp(){
     setWelcome();
     setWeather();
     setTodos();
-    setTodo();
     setBackground();
 }
-
-$("#todomessage").click(setTodo());
