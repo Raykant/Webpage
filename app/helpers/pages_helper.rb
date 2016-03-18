@@ -20,23 +20,23 @@ module PagesHelper
   def reddit_cache
     url = 'https://www.reddit.com/r/EarthPorn/.json?q=&restrict_sr=on&sort=hot&t=day&limit=5'
     response = HTTParty.get(url)
-    puts "Got reddit request"
-
     json = JSON.parse(response.body)
-
-    puts "starting loop"
 
     i = 0;
     while(i < 5) do
-      puts i
       url = json.fetch('data').fetch('children')[i].fetch('data').fetch('url')
 
       if url.include? "imgur" then
         if !(/\.(jpg|jpeg|png|gif)/ =~ url) then
           url += '.png'
         end
-        return url;
+
+        size = FastImage.size(url);
+        if size[0] > 999 && size[1] > 999 then
+          return url;
+        end
       end
+      
       i += 1
     end
   end
