@@ -44,11 +44,7 @@ module PagesHelper
   def get_weather
 
     location = Rails.cache.fetch("locations/#{request.remote_ip}") do
-
-      spotresponse = HTTParty.get("http://freegeoip.net/json/#{request.remote_ip}")
-
-      {:ip => request.remote_ip, :lat => spotresponse.fetch("latitude"), :lon => spotresponse.fetch('longitude'), :city => spotresponse.fetch('city')}
-
+      {ip: "#{request.remote_ip}", city: request.location.city, lat: request.location.latitude, lon: request.location.longitude}
     end
 
     data = Rails.cache.fetch("locations/weather/#{request.remote_ip}", expires_in: 15.minutes) do
