@@ -43,8 +43,13 @@ module PagesHelper
 
   def get_weather
 
+    Geocoder.configure(:timeout => 5, :ip_lookup => :google)
+
     location = Rails.cache.fetch("locations/#{request.remote_ip}") do
-      {ip: "#{request.remote_ip}", city: request.location.city, lat: request.location.latitude, lon: request.location.longitude}
+
+      data = Geocoder.coordinates(request.remote_ip)
+
+      {ip: "#{request.remote_ip}", city: request.location.city, lat: data.first, lon: data.last}
     end
 
     data = Rails.cache.fetch("locations/weather/#{request.remote_ip}", expires_in: 15.minutes) do
