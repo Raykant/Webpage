@@ -40,14 +40,6 @@ function welcomeMsg(){
     var t = setTimeout(welcomeMsg, 60000);
 }
 
-function setWeather(){
-    $.ajax({
-        url: "/weather"
-    }).done(function(html) {
-        $(".weather").append(html);
-    });
-}
-
 function setTodos(){
     $.ajax({
         url: "/todolist"
@@ -90,6 +82,29 @@ function setBackground(){
     });
 }
 
+function getWeather() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        loadWeather(position.coords.latitude+','+position.coords.longitude); //load weather using your lat/lng coordinates
+    });
+}
+
+function loadWeather(location, woeid) {
+    $.simpleWeather({
+        location: location,
+        woeid: woeid,
+        unit: 'f',
+        success: function(weather) {
+            html = '<h2><i class="icon-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+            html += '<h3>'+weather.city+', '+weather.region+'</h3>';
+
+            $("#weather").html(html);
+        },
+        error: function(error) {
+            $("#weather").html('<p>'+error+'</p>');
+        }
+    });
+}
+
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
@@ -97,7 +112,7 @@ function checkTime(i) {
 
 function startUp(){
     setWelcome();
-    setWeather();
+    getWeather();
     setTodos();
     setBackground();
 }

@@ -41,30 +41,6 @@ module PagesHelper
     end
   end
 
-  def get_weather
-
-    Geocoder.configure(:timeout => 5, :ip_lookup => :google)
-
-    location = Rails.cache.fetch("locations/#{request.remote_ip}") do
-
-      data = Geocoder.coordinates(request.remote_ip)
-
-      {ip: "#{request.remote_ip}", city: request.location.city, lat: data.first, lon: data.last}
-    end
-
-    data = Rails.cache.fetch("locations/weather/#{request.remote_ip}", expires_in: 15.minutes) do
-      url = "https://api.forecast.io/forecast/059e13194aa7a13e2ac742a1bce77edb/#{location.lat},#{location.lon}"
-
-      response = HTTParty.get(url)
-
-      JSON.parse(response.body)
-    end
-
-    content_tag(:i, nil, :class => get_icon(data)) +
-        content_tag(:h3, location.city) +
-        content_tag(:h3, get_temp(data))
-  end
-
   def get_icon(data)
 
     code = data.fetch('currently').fetch('icon')
