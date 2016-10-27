@@ -29,12 +29,21 @@ function welcomeMsg(){
     var today = new Date();
     var hour = today.getHours();
     var msg = "";
+<<<<<<< HEAD
     if(hour < 2 || hour >= 22) msg = "Getting tired, Ellie?";
     else if(hour >= 2 && hour < 6) msg = "Can't sleep, Ellie?";
     else if(hour >= 6 && hour < 10) msg = "Good morning, Ellie.";
     else if(hour >= 10 && hour < 12) msg = "How are you, Ellie?";
     else if(hour >= 12 && hour < 17) msg = "Good afternoon, Ellie.";
     else if(hour >= 17 && hour < 22) msg = "Good evening, Ellie.";
+=======
+    if(hour < 2 || hour >= 22) msg = "Getting tired, Pieter?";
+    else if(hour >= 2 && hour < 6) msg = "Can't sleep, Pieter?";
+    else if(hour >= 6 && hour < 10) msg = "Good morning, Pieter.";
+    else if(hour >= 10 && hour < 12) msg = "How are you, Pieter?";
+    else if(hour >= 12 && hour < 17) msg = "Good afternoon, Pieter.";
+    else if(hour >= 17 && hour < 22) msg = "Good evening, Pieter.";
+>>>>>>> 06fe587bddb9f423e4602a93f14071422d6793bf
 
     document.getElementById('welcometxt').innerHTML = msg;
     var t = setTimeout(welcomeMsg, 60000);
@@ -83,10 +92,32 @@ function setBackground(){
 }
 
 function getWeather() {
+<<<<<<< HEAD
     $.ajax({
         url: "/weather"
     }).done(function(html) {
         $(".weather").html = html;
+=======
+    navigator.geolocation.getCurrentPosition(function(position) {
+        loadWeather(position.coords.latitude+','+position.coords.longitude); //load weather using your lat/lng coordinates
+    });
+}
+
+function loadWeather(location, woeid) {
+    $.simpleWeather({
+        location: location,
+        woeid: woeid,
+        unit: 'f',
+        success: function(weather) {
+            html = '<h2><i class="icon-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+            html += '<h3>'+weather.city+', '+weather.region+'</h3>';
+
+            $("#weather").html(html);
+        },
+        error: function(error) {
+            $("#weather").html('<p>'+error+'</p>');
+        }
+>>>>>>> 06fe587bddb9f423e4602a93f14071422d6793bf
     });
 }
 

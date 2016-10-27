@@ -41,6 +41,7 @@ module PagesHelper
     end
   end
 
+<<<<<<< HEAD
   def get_weather
     @ip = request.remote_ip
     puts(@ip)
@@ -66,6 +67,22 @@ module PagesHelper
     puts(temperature)
 
     return content_tag(:i, :class => code) + content_tag(:h3, temperature)
+=======
+  def get_icon(data)
+
+    code = data.fetch('currently').fetch('icon')
+
+    return "wi wi-forecast-io-#{code}"
+  end
+
+  def get_temp(data)
+
+    temp = data.fetch('currently').fetch('temperature')
+
+    temp = temp.round(1)
+
+    "#{temp}°F"
+>>>>>>> 06fe587bddb9f423e4602a93f14071422d6793bf
   end
 
   def get_todo
