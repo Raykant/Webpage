@@ -1,0 +1,5 @@
+<li id="<%= todo.id %>">
+  <h3 class="todoitem">
+    <%= link_to(todo.item, "todos/#{todo.id}", :class => "itemlink", :method => :delete, remote: true) %>
+  </h3>
+</li>

@@ -1,0 +1,28 @@
+<%= provide(:title, "Welcome Back") %>
+
+<head>
+</head>
+
+<body onload="startUp()">
+<div class="row" id="welcome">
+
+</div>
+<div class="row" id="dynamic">
+  <div class="container-fluid">
+    <div class="col-xs-3" id="todos">
+
+    </div>
+    <div class="col-xs-4 col-xs-offset-1" id="todo">
+      <div class="formcontainer">
+        <%= form_for(@todo, remote: true) do |f| %>
+            <%= f.text_field :item, :autocomplete => "off", :placeholder => get_exampleitem %>
+            <%= f.submit "", class: "btn btn-primary", :id => "submitbtn" %>
+        <% end %>
+      </div>
+
+    </div>
+    <div class="weather col-xs-3" id="weather">
+    </div>
+  </div>
+</div>
+</body>

@@ -1,0 +1,72 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#welcome{
+  margin-top: 30px;
+}
+
+.welcome{
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#welcometxt{
+  font-size: 68px;
+}
+
+#timetxt{
+  font-size: 140px;
+}
+
+#dynamic{
+  margin-top: 80px;
+}
+
+.weather{
+  float:right;
+  text-align: right;
+}
+
+.weather h3{
+  text-transform: capitalize;
+}
+
+input {
+  width: 100%;
+  font-size: 22px;
+  background-color: transparent;
+  color: #FFFFFF;
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid #eeeeee 3px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: #cccccc;
+}
+
+.todolist{
+  list-style: none;
+  padding: 0 0 0 0;
+  margin: 13px 0 0 0;
+}
+
+.todoitem{
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.todoitem a{
+  color: #FFFFFF;
+}
+
+#submitbtn {
+  background: transparent;
+  border: none;
+  font-size:0;
+  height: 0px;
+  widht: 0px;
+  padding: 0 0 0 0;
+}
